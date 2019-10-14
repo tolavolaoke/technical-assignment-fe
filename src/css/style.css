@@ -1,3 +1,13 @@
-h2 {
-	color: orange;
+.choices{
+    text-align: center;
+}
+
+.choice{
+    display: inline-block;
+}
+
+#action-message{
+    text-align: center;
+    font-weight: bold;
+
 }
