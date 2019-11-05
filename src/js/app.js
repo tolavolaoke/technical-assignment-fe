@@ -1,9 +1,9 @@
 console.log("yeah it works!");
 
-const userScore = 0;
-const compScore = 0;
+let userScore = 0;
+let compScore = 0;
 const userScore_span = document.getElementById("user-score");
-const compterScore_span = document.getElementById("computer-score");
+const computerScore_span = document.getElementById("computer-score");
 const scores_div = document.querySelector (".scores");
 
 const rock_div = document.getElementById("r");
@@ -19,9 +19,58 @@ function getComputerChoice() {
 
 }
 
+function convertToWord (letter) {
+    if (letter === "r") return "Rock";
+    if (letter === "p") return "Paper";
+    return "Scissors";
+ }
+
+function win(userChoice, computerChoice) {
+    userScore++;
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = compScore;
+    result_p.innerHTML = convertToWord(userChoice) + " beats " + convertToWord(computerChoice) + ". You win! ";
+}
+function loose(userChoice, computerChoice){
+    compScore++;
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = compScore;
+    result_p.innerHTML = convertToWord(userChoice) + " looses " + convertToWord(computerChoice) + ". You lost! ";
+}
+function draw(userChoice, computerChoice){
+    result_p.innerHTML = convertToWord(userChoice) + " equals " + convertToWord(computerChoice) + ". Its a draw! ";
+}
+
+
 //Defines Game function
 //(takes the users input which is the users choice) when button is clicked take the value of the button ('r', 'p', 's') and compare it against the computers choice, and get the result back
 function game(userChoice){
+    const computerChoice = getComputerChoice();
+    // console.log("user choice is" + userChoice); //Test the userchoice 
+    // console.log("computer choice is" + computerChoice); //Test the computerchoice
+
+    //switch statements for win loose draw conditions
+    switch (userChoice + computerChoice){
+        case "rs":
+                case "pr":
+                        case "sp":
+                            // console.log("user wins!");
+                            win(userChoice, computerChoice);
+                            break;
+                            case "rp":
+                                    case "ps":
+                                            case "sr":
+                                                    // console.log("user looses!");
+                                                    loose(userChoice, computerChoice);
+                                                    break;
+                                                    case "rr":
+                                                            case "pp":
+                                                                    case "ss":
+                                                                            // console.log("user draws!");
+                                                                            draw(userChoice, computerChoice);
+                                                                            break;
+
+    }
 
 
 } 
